@@ -64,7 +64,7 @@ class _KeyValueScreenState extends State<KeyValueScreen> {
                 future: inKeyDB.getAllEntries(),
                 builder: (context, snapshot) {
                   if (!snapshot.hasData) {
-                    return const CircleAvatar();
+                    return const CircularProgressIndicator();
                   }
 
                   return Column(
@@ -81,29 +81,22 @@ class _KeyValueScreenState extends State<KeyValueScreen> {
                                 keyController,
                                 valueController,
                               ) async {
-                                bool res =
-                                    formKey.currentState?.validate() ?? false;
-                                if (!res) return;
+                                // bool res =
+                                //     formKey.currentState?.validate() ?? false;
+                                // if (!res) return;
 
-                                try {
-                                  await inKeyDB.update(
-                                    key: keyController.text,
-                                    value: valueController.text,
-                                  );
-                                  if (context.mounted) {
-                                    Navigator.of(context).pop();
-                                  }
-                                } catch (_) {
-                                  return;
-                                }
+                                // try {
+                                //   await inKeyDB.update(
+                                //     key: keyController.text,
+                                //     value: valueController.text,
+                                //   );
+                                // } catch (_) {
+                                //   return;
+                                // }
 
-                                setState(() {});
+                                // setState(() {});
                               },
-                              onCancel: () async {
-                                if (context.mounted) {
-                                  Navigator.of(context).pop();
-                                }
-                              },
+                              onCancel: () async {},
                             );
                           },
                           onDelete: (entry) async {
@@ -133,20 +126,13 @@ class _KeyValueScreenState extends State<KeyValueScreen> {
                   key: keyController.text,
                   value: valueController.text,
                 );
-                if (context.mounted) {
-                  Navigator.of(context).pop();
-                }
               } catch (_) {
                 return;
               }
 
               setState(() {});
             },
-            onCancel: () async {
-              if (context.mounted) {
-                Navigator.of(context).pop();
-              }
-            },
+            onCancel: () async {},
           );
         },
         child: const Icon(Icons.add),

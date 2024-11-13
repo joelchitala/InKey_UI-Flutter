@@ -87,7 +87,7 @@ class _SetTransactionScreenState extends State<SetTransactionScreen> {
             context: context,
             isScrollControlled: true,
             builder: (context) {
-              return Container(
+              return SizedBox(
                 width: double.maxFinite,
                 height: 360,
                 child: Column(
